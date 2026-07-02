@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Deutschweg — Recursos gratuitos de alemán</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:      #1a1a2e;
+      --ink-soft: #4a4a6a;
+      --page:     #faf9f6;
+      --cream:    #f0ede4;
+      --gold:     #c8882a;
+      --gold-lt:  #f5e6cc;
+      --teal:     #1a5fa8;
+      --teal-lt:  #dceaf7;
+      --red:      #b84040;
+      --rule:     #d8d4c8;
+      --serif:    'Montserrat', sans-serif;
+      --sans:     'Montserrat', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--page);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── NAVEGACIÓN ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--page);
+      border-bottom: 1px solid var(--rule);
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-logo em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--ink-soft);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--teal); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 3rem;
+      padding: clamp(3rem, 8vw, 6rem) clamp(1.5rem, 5vw, 4rem);
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero-text {}
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.2rem;
+      border-bottom: 1.5px solid var(--teal);
+      padding-bottom: 2px;
+    }
+
+    h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.8rem, 6vw, 4.4rem);
+      font-weight: 700;
+      line-height: 1.08;
+      color: var(--ink);
+      margin-bottom: 0.2em;
+    }
+
+    h1 em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 44ch;
+      margin: 1.4rem 0 2.2rem;
+      line-height: 1.75;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.75rem 1.8rem;
+      border-radius: 3px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover {
+      background: #124a87;
+      transform: translateY(-1px);
+    }
+
+    /* ── HERO VISUAL — Teclado fonético ── */
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .phonetic-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      max-width: 320px;
+    }
+
+    .ph-card {
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 14px 10px 10px;
+      text-align: center;
+      cursor: default;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+      position: relative;
+    }
+
+    .ph-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.09);
+      border-color: var(--teal);
+    }
+
+    .ph-card.gold:hover { border-color: var(--gold); }
+    .ph-card.red:hover  { border-color: var(--red); }
+
+    .ph-symbol {
+      font-family: var(--serif);
+      font-size: 1.7rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .ph-card.gold .ph-symbol { color: var(--gold); }
+    .ph-card.red  .ph-symbol { color: var(--red); }
+
+    .ph-label {
+      font-size: 0.68rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .ph-card.wide {
+      grid-column: span 2;
+    }
+
+    /* ── FRANJA ESTADÍSTICA ── */
+    .band {
+      background: var(--ink);
+      color: #fff;
+      padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      justify-content: center;
+      gap: clamp(2rem, 6vw, 6rem);
+      flex-wrap: wrap;
+    }
+
+    .stat { text-align: center; }
+
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 0.8rem;
+      color: #b0aec8;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 0.3rem;
+    }
+
+    /* ── SECCIONES DE CONTENIDO ── */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 5rem clamp(1.5rem, 5vw, 4rem);
+    }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+
+    h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    .section-intro {
+      font-size: 1rem;
+      color: var(--ink-soft);
+      max-width: 60ch;
+      margin-bottom: 3rem;
+    }
+
+    /* ── TARJETAS DE MÓDULOS ── */
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .module-card {
+      background: white;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 2rem 1.6rem;
+      text-decoration: none;
+      color: var(--ink);
+      display: block;
+      transition: transform 0.18s, box-shadow 0.18s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+    }
+
+    .module-card.phonetic::before { background: var(--teal); }
+    .module-card.grammar::before  { background: var(--gold); }
+    .module-card.vocab::before    { background: var(--red); }
+    .module-card.strategy::before { background: var(--ink-soft); }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+    }
+
+    .module-tag {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.8rem;
+    }
+
+    .module-card.phonetic .module-tag { color: var(--teal); }
+    .module-card.grammar  .module-tag { color: var(--gold); }
+    .module-card.vocab    .module-tag { color: var(--red); }
+    .module-card.strategy .module-tag { color: var(--ink-soft); }
+
+    .module-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+      line-height: 1.2;
+    }
+
+    .module-desc {
+      font-size: 0.88rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+
+    .module-badge {
+      display: inline-block;
+      margin-top: 1.2rem;
+      font-size: 0.72rem;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+
+    .badge-active {
+      background: var(--teal-lt);
+      color: var(--teal);
+    }
+
+    .badge-soon {
+      background: var(--cream);
+      color: var(--ink-soft);
+    }
+
+    /* ── DESCRIPCIÓN DEL PROYECTO ── */
+    .about {
+      background: var(--cream);
+      border-radius: 8px;
+      padding: 3rem clamp(1.5rem, 4vw, 3.5rem);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+      max-width: 1100px;
+      margin: 0 auto 5rem;
+    }
+
+    .about-aside {
+      position: sticky;
+      top: 80px;
+    }
+
+    .about-aside p {
+      font-family: var(--serif);
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.35;
+      color: var(--ink);
+    }
+
+    .about-aside p em {
+      font-style: italic;
+      font-weight: 300;
+      color: var(--teal);
+    }
+
+    .about-body p {
+      color: var(--ink-soft);
+      margin-bottom: 1rem;
+      font-size: 0.97rem;
+      line-height: 1.8;
+    }
+
+    .about-body p:last-child { margin-bottom: 0; }
+
+    /* ── SERIE FONÉTICA — PRIMEROS RECURSOS ── */
+    .phonetics-preview {
+      border-top: 1px solid var(--rule);
+      padding-top: 4rem;
+    }
+
+    .resource-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--rule);
+    }
+
+    .resource-item {
+      background: white;
+      padding: 1.1rem 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background 0.15s;
+    }
+
+    .resource-item:hover { background: var(--teal-lt); }
+
+    .resource-num {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      color: var(--rule);
+      min-width: 2rem;
+      line-height: 1;
+    }
+
+    .resource-info { flex: 1; }
+
+    .resource-title {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 0.1rem;
+    }
+
+    .resource-meta {
+      font-size: 0.78rem;
+      color: var(--ink-soft);
+    }
+
+    .resource-type {
+      font-size: 0.72rem;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background: var(--teal-lt);
+      color: var(--teal);
+      white-space: nowrap;
+    }
+
+    .resource-type.video {
+      background: var(--gold-lt);
+      color: var(--gold);
+    }
+
+    /* ── PIE ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+
+    .footer-logo em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-note {
+      font-size: 0.8rem;
+      color: var(--ink-soft);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 3rem; }
+      .hero-visual { display: none; }
+      .about { grid-template-columns: 1fr; }
+      .about-aside { position: static; }
+      nav ul { display: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVEGACIÓN -->
+<nav>
+  <a class="nav-logo" href="#"><em>Mein </em><span>Deutsch</span>weg</a>
+  <ul>
+    <li><a href="#contenidos">Contenidos</a></li>
+    <li><a href="#fonetica">Fonética</a></li>
+    <li><a href="#proyecto">El proyecto</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <span class="eyebrow">Recursos gratuitos de alemán</span>
+    <h1>Tu camino<br>en el <em>alemán</em><br>empieza aquí.</h1>
+    <p class="hero-sub">Explicaciones, ejercicios y materiales pensados desde el español, para que cada paso tenga sentido.</p>
+    <a href="#contenidos" class="btn-primary">Explorar contenidos</a>
+  </div>
+  <div class="hero-visual">
+    <div class="phonetic-grid">
+      <div class="ph-card gold">
+        <span class="ph-symbol">ü</span>
+        <span class="ph-label">Umlaut</span>
+      </div>
+      <div class="ph-card">
+        <span class="ph-symbol">ch</span>
+        <span class="ph-label">Ach-laut</span>
+      </div>
+      <div class="ph-card red">
+        <span class="ph-symbol">ö</span>
+        <span class="ph-label">Umlaut</span>
+      </div>
+      <div class="ph-card">
+        <span class="ph-symbol">r</span>
+        <span class="ph-label">Uvular</span>
+      </div>
+      <div class="ph-card">
+        <span class="ph-symbol">ß</span>
+        <span class="ph-label">Scharfes S</span>
+      </div>
+      <div class="ph-card wide gold">
+        <span class="ph-symbol">ä</span>
+        <span class="ph-label">Umlaut</span>
+      </div>
+      <div class="ph-card red">
+        <span class="ph-symbol">ei</span>
+        <span class="ph-label">Diptongo</span>
+      </div>
+      <div class="ph-card">
+        <span class="ph-symbol">ie</span>
+        <span class="ph-label">Vocal larga</span>
+      </div>
+      <div class="ph-card">
+        <span class="ph-symbol">sp</span>
+        <span class="ph-label">Inicial</span>
+      </div>
+      <div class="ph-card gold">
+        <span class="ph-symbol">eu</span>
+        <span class="ph-label">Diptongo</span>
+      </div>
+      <div class="ph-card wide">
+        <span class="ph-symbol">au</span>
+        <span class="ph-label">Diptongo</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FRANJA ESTADÍSTICA -->
+<div class="band">
+  <div class="stat">
+    <span class="stat-num">A1–C1</span>
+    <div class="stat-label">Niveles cubiertos (en construcción)</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num">100%</span>
+    <div class="stat-label">Gratuito y abierto</div>
+  </div>
+  <div class="stat">
+    <span class="stat-num">ES→DE</span>
+    <div class="stat-label">Desde el español</div>
+  </div>
+</div>
+
+<!-- MÓDULOS -->
+<section id="contenidos">
+  <div class="section-label">Contenidos</div>
+  <h2>¿Qué encontrarás aquí?</h2>
+  <p class="section-intro">El sitio crece por módulos temáticos. Cada uno ofrece explicaciones, ejercicios y materiales de práctica. Algunos ya están disponibles; otros están en camino.</p>
+  <div class="modules-grid">
+    <a class="module-card phonetic" href="#fonetica">
+      <div class="module-tag">Fonética</div>
+      <div class="module-title">Deutsch klingt gut</div>
+      <p class="module-desc">Los sonidos del alemán explicados desde el español: vocales, consonantes, acento y ritmo.</p>
+      <span class="module-badge badge-active">Disponible</span>
+    </a>
+    <div class="module-card grammar">
+      <div class="module-tag">Gramática</div>
+      <div class="module-title">Strukturen</div>
+      <p class="module-desc">Los casos, los artículos, los verbos y la sintaxis alemana, paso a paso y sin miedo.</p>
+      <span class="module-badge badge-soon">Próximamente</span>
+    </div>
+    <div class="module-card vocab">
+      <div class="module-tag">Vocabulario</div>
+      <div class="module-title">Wörter & Welten</div>
+      <p class="module-desc">Palabras en contexto, campos semánticos y estrategias para ampliar el léxico con eficacia.</p>
+      <span class="module-badge badge-soon">Próximamente</span>
+    </div>
+    <div class="module-card strategy">
+      <div class="module-tag">Estrategias</div>
+      <div class="module-title">Wie ich lerne</div>
+      <p class="module-desc">Técnicas de aprendizaje, comprensión de lectura y recursos para aprender con mayor autonomía.</p>
+      <span class="module-badge badge-soon">Próximamente</span>
+    </div>
+  </div>
+</section>
+
+<!-- FONÉTICA — PRIMEROS RECURSOS -->
+<section id="fonetica" class="phonetics-preview">
+  <div class="section-label">Deutsch klingt gut — Fonética</div>
+  <h2>Los primeros recursos</h2>
+  <p class="section-intro">Una serie dedicada a los sonidos del alemán para hablantes de español. Cada tema incluye explicación, audio o video y ejercicio de práctica.</p>
+  <div class="resource-list">
+    <div class="resource-item">
+      <span class="resource-num">01</span>
+      <div class="resource-info">
+        <div class="resource-title">Vocales largas y cortas: la cantidad vocálica en alemán</div>
+        <div class="resource-meta">Nivel A1 · Explicación + ejercicio</div>
+      </div>
+      <span class="resource-type">En preparación</span>
+    </div>
+    <div class="resource-item">
+      <span class="resource-num">02</span>
+      <div class="resource-info">
+        <div class="resource-title">Los Umlaute: ä, ö, ü desde el español</div>
+        <div class="resource-meta">Nivel A1 · Explicación + audio</div>
+      </div>
+      <span class="resource-type">En preparación</span>
+    </div>
+    <div class="resource-item">
+      <span class="resource-num">03</span>
+      <div class="resource-info">
+        <div class="resource-title">La ch: dos sonidos, una grafía</div>
+        <div class="resource-meta">Nivel A1–A2 · Video + ejercicio</div>
+      </div>
+      <span class="resource-type video">Video</span>
+    </div>
+    <div class="resource-item">
+      <span class="resource-num">04</span>
+      <div class="resource-info">
+        <div class="resource-title">La R uvular: cómo producirla desde cero</div>
+        <div class="resource-meta">Nivel A1–A2 · Video + práctica</div>
+      </div>
+      <span class="resource-type video">Video</span>
+    </div>
+    <div class="resource-item">
+      <span class="resource-num">05</span>
+      <div class="resource-info">
+        <div class="resource-title">Auslautverhärtung: el ensordecimiento final</div>
+        <div class="resource-meta">Nivel A2 · Explicación + ejercicio</div>
+      </div>
+      <span class="resource-type">En preparación</span>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE EL PROYECTO -->
+<div class="about" id="proyecto">
+  <div class="about-aside">
+    <p>El alemán <em>para todos</em> los que quieran aprenderlo.</p>
+  </div>
+  <div class="about-body">
+    <p><em>Mein Deutschweg</em> es un espacio abierto y sin fines de lucro pensado para todas las personas de habla hispana que quieren aprender alemán o acompañar a otros en ese camino.</p>
+    <p>Aquí encontrará explicaciones claras, ejercicios de práctica y materiales diseñados con atención pedagógica, disponibles de forma completamente gratuita. El contenido está pensado desde la perspectiva de quien aprende alemán teniendo el español como lengua materna: reconocemos los puntos de encuentro entre las dos lenguas y también los momentos donde el alemán pide un esfuerzo diferente.</p>
+    <p>Este proyecto nace desde la práctica docente y el amor por las lenguas, con la convicción de que el acceso a materiales de calidad no debería depender del presupuesto de nadie.</p>
+    <p style="margin-top:1.4rem; font-style:italic; color: var(--teal); font-size:0.95rem;">Bienvenida. Bienvenido. Willkommen.</p>
+  </div>
+</div>
+
+<!-- PIE -->
+<footer>
+  <div class="footer-logo"><em>Mein </em><span>Deutsch</span>weg</div>
+  <div class="footer-note">Recursos gratuitos de alemán para hispanohablantes · Sin fines de lucro</div>
+</footer>
+
+</body>
+</html>
