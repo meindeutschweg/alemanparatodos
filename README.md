@@ -1,1 +1,1 @@
-# .alemanparatodos
+# alemanparatodos
