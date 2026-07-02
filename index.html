@@ -152,62 +152,71 @@
       transform: translateY(-1px);
     }
 
-    /* ── HERO VISUAL — Teclado fonético ── */
+    /* ── HERO VISUAL — Mosaico de áreas ── */
     .hero-visual {
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .phonetic-grid {
+    .areas-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
       gap: 10px;
-      max-width: 320px;
+      max-width: 340px;
+      width: 100%;
     }
 
-    .ph-card {
+    .area-card {
       background: white;
       border: 1px solid var(--rule);
-      border-radius: 6px;
-      padding: 14px 10px 10px;
+      border-radius: 10px;
+      padding: 1.1rem 0.8rem 0.9rem;
       text-align: center;
       cursor: default;
       transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
-      position: relative;
     }
 
-    .ph-card:hover {
+    .area-card:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 18px rgba(0,0,0,0.09);
-      border-color: var(--teal);
     }
 
-    .ph-card.gold:hover { border-color: var(--gold); }
-    .ph-card.red:hover  { border-color: var(--red); }
+    .area-card.c-blue:hover  { border-color: var(--blue); }
+    .area-card.c-gold:hover  { border-color: var(--gold); }
+    .area-card.c-red:hover   { border-color: var(--red); }
+    .area-card.c-purple:hover { border-color: #7a4a9e; }
+    .area-card.c-green:hover  { border-color: #2d7a4a; }
+    .area-card.c-teal:hover   { border-color: #2d7a6e; }
 
-    .ph-symbol {
-      font-family: var(--serif);
-      font-size: 1.7rem;
-      font-weight: 700;
+    .area-icon {
+      font-size: 1.6rem;
+      display: block;
+      margin-bottom: 0.4rem;
       line-height: 1;
+    }
+
+    .area-card.c-blue   .area-icon { color: var(--blue); }
+    .area-card.c-gold   .area-icon { color: var(--gold); }
+    .area-card.c-red    .area-icon { color: var(--red); }
+    .area-card.c-purple .area-icon { color: #7a4a9e; }
+    .area-card.c-green  .area-icon { color: #2d7a4a; }
+    .area-card.c-teal   .area-icon { color: #2d7a6e; }
+
+    .area-name {
+      font-size: 0.72rem;
+      font-weight: 600;
       color: var(--ink);
       display: block;
-      margin-bottom: 6px;
+      letter-spacing: 0.02em;
     }
 
-    .ph-card.gold .ph-symbol { color: var(--gold); }
-    .ph-card.red  .ph-symbol { color: var(--red); }
-
-    .ph-label {
-      font-size: 0.68rem;
+    .area-sub {
+      font-size: 0.64rem;
       color: var(--ink-soft);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .ph-card.wide {
-      grid-column: span 2;
+      display: block;
+      margin-top: 0.15rem;
     }
 
     /* ── FRANJA ESTADÍSTICA ── */
@@ -301,7 +310,9 @@
     .module-card.phonetic::before { background: var(--teal); }
     .module-card.grammar::before  { background: var(--gold); }
     .module-card.vocab::before    { background: var(--red); }
-    .module-card.strategy::before { background: var(--ink-soft); }
+    .module-card.strategy::before  { background: #7a4a9e; }
+    .module-card.listening::before { background: #2d7a4a; }
+    .module-card.culture::before   { background: #2d7a6e; }
 
     .module-card:hover {
       transform: translateY(-4px);
@@ -319,7 +330,9 @@
     .module-card.phonetic .module-tag { color: var(--teal); }
     .module-card.grammar  .module-tag { color: var(--gold); }
     .module-card.vocab    .module-tag { color: var(--red); }
-    .module-card.strategy .module-tag { color: var(--ink-soft); }
+    .module-card.strategy  .module-tag { color: #7a4a9e; }
+    .module-card.listening .module-tag { color: #2d7a4a; }
+    .module-card.culture   .module-tag { color: #2d7a6e; }
 
     .module-title {
       font-family: var(--serif);
@@ -513,7 +526,7 @@
   <a class="nav-logo" href="#"><em>Mein </em><span>Deutsch</span>weg</a>
   <ul>
     <li><a href="#contenidos">Contenidos</a></li>
-    <li><a href="#fonetica">Fonética</a></li>
+    <li><a href="#recursos">Recursos</a></li>
     <li><a href="#proyecto">El proyecto</a></li>
   </ul>
 </nav>
@@ -527,50 +540,41 @@
     <a href="#contenidos" class="btn-primary">Explorar contenidos</a>
   </div>
   <div class="hero-visual">
-    <div class="phonetic-grid">
-      <div class="ph-card gold">
-        <span class="ph-symbol">ü</span>
-        <span class="ph-label">Umlaut</span>
+    <div class="areas-grid">
+      <div class="area-card c-blue">
+        <span class="area-icon">🔊</span>
+        <span class="area-name">Fonética</span>
+        <span class="area-sub">Deutsch klingt gut</span>
       </div>
-      <div class="ph-card">
-        <span class="ph-symbol">ch</span>
-        <span class="ph-label">Ach-laut</span>
+      <div class="area-card c-gold">
+        <span class="area-icon">📐</span>
+        <span class="area-name">Gramática</span>
+        <span class="area-sub">Strukturen</span>
       </div>
-      <div class="ph-card red">
-        <span class="ph-symbol">ö</span>
-        <span class="ph-label">Umlaut</span>
+      <div class="area-card c-red">
+        <span class="area-icon">📖</span>
+        <span class="area-name">Lectura</span>
+        <span class="area-sub">Lesen & Verstehen</span>
       </div>
-      <div class="ph-card">
-        <span class="ph-symbol">r</span>
-        <span class="ph-label">Uvular</span>
+      <div class="area-card c-red">
+        <span class="area-icon">🗣️</span>
+        <span class="area-name">Habla</span>
+        <span class="area-sub">Sprechen & Üben</span>
       </div>
-      <div class="ph-card">
-        <span class="ph-symbol">ß</span>
-        <span class="ph-label">Scharfes S</span>
+      <div class="area-card c-green">
+        <span class="area-icon">👂</span>
+        <span class="area-name">Escucha</span>
+        <span class="area-sub">Hören & Lernen</span>
       </div>
-      <div class="ph-card wide gold">
-        <span class="ph-symbol">ä</span>
-        <span class="ph-label">Umlaut</span>
+      <div class="area-card c-teal">
+        <span class="area-icon">🌍</span>
+        <span class="area-name">Cultura</span>
+        <span class="area-sub">Länder & Leute</span>
       </div>
-      <div class="ph-card red">
-        <span class="ph-symbol">ei</span>
-        <span class="ph-label">Diptongo</span>
-      </div>
-      <div class="ph-card">
-        <span class="ph-symbol">ie</span>
-        <span class="ph-label">Vocal larga</span>
-      </div>
-      <div class="ph-card">
-        <span class="ph-symbol">sp</span>
-        <span class="ph-label">Inicial</span>
-      </div>
-      <div class="ph-card gold">
-        <span class="ph-symbol">eu</span>
-        <span class="ph-label">Diptongo</span>
-      </div>
-      <div class="ph-card wide">
-        <span class="ph-symbol">au</span>
-        <span class="ph-label">Diptongo</span>
+      <div class="area-card c-purple">
+        <span class="area-icon">🧭</span>
+        <span class="area-name">Estrategias</span>
+        <span class="area-sub">Wie ich lerne</span>
       </div>
     </div>
   </div>
@@ -598,7 +602,7 @@
   <h2>¿Qué encontrarás aquí?</h2>
   <p class="section-intro">El sitio crece por módulos temáticos. Cada uno ofrece explicaciones, ejercicios y materiales de práctica. Algunos ya están disponibles; otros están en camino.</p>
   <div class="modules-grid">
-    <a class="module-card phonetic" href="#fonetica">
+    <a class="module-card phonetic" href="#recursos">
       <div class="module-tag">Fonética</div>
       <div class="module-title">Deutsch klingt gut</div>
       <p class="module-desc">Los sonidos del alemán explicados desde el español: vocales, consonantes, acento y ritmo.</p>
@@ -611,9 +615,27 @@
       <span class="module-badge badge-soon">Próximamente</span>
     </div>
     <div class="module-card vocab">
-      <div class="module-tag">Vocabulario</div>
-      <div class="module-title">Wörter & Welten</div>
-      <p class="module-desc">Palabras en contexto, campos semánticos y estrategias para ampliar el léxico con eficacia.</p>
+      <div class="module-tag">Lectura</div>
+      <div class="module-title">Lesen & Verstehen</div>
+      <p class="module-desc">Textos graduados, estrategias de comprensión lectora y recursos para leer con confianza.</p>
+      <span class="module-badge badge-soon">Próximamente</span>
+    </div>
+    <div class="module-card strategy">
+      <div class="module-tag">Habla</div>
+      <div class="module-title">Sprechen & Üben</div>
+      <p class="module-desc">Expresión oral, pronunciación en contexto y actividades para ganar fluidez y confianza al hablar.</p>
+      <span class="module-badge badge-soon">Próximamente</span>
+    </div>
+    <div class="module-card listening">
+      <div class="module-tag">Escucha</div>
+      <div class="module-title">Hören & Lernen</div>
+      <p class="module-desc">Comprensión auditiva con materiales auténticos y actividades graduadas por nivel.</p>
+      <span class="module-badge badge-soon">Próximamente</span>
+    </div>
+    <div class="module-card culture">
+      <div class="module-tag">Cultura</div>
+      <div class="module-title">Länder & Leute</div>
+      <p class="module-desc">Tradiciones, historia y vida cotidiana de Alemania, Austria y Suiza para entender la lengua desde adentro.</p>
       <span class="module-badge badge-soon">Próximamente</span>
     </div>
     <div class="module-card strategy">
@@ -626,8 +648,8 @@
 </section>
 
 <!-- FONÉTICA — PRIMEROS RECURSOS -->
-<section id="fonetica" class="phonetics-preview">
-  <div class="section-label">Deutsch klingt gut — Fonética</div>
+<section id="recursos" class="phonetics-preview">
+  <div class="section-label">Deutsch klingt gut — Primeros recursos de fonética</div>
   <h2>Los primeros recursos</h2>
   <p class="section-intro">Una serie dedicada a los sonidos del alemán para hablantes de español. Cada tema incluye explicación, audio o video y ejercicio de práctica.</p>
   <div class="resource-list">
